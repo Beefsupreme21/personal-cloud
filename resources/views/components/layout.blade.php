@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Website</title>
     @vite(['resources/js/app.js', 'resources/css/app.css'])
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
 </head>
 
@@ -16,7 +17,7 @@
         <x-desktop-nav />
     </header>
 
-    <div class="flex flex-1 flex-col bg-[#171923] md:pl-64">
+    <div class="flex flex-1 flex-col bg-[#1b1b1c] md:pl-64">
         <x-mobile-nav-toggle />
         <main class="max-w-screen-lg min-h-screen sm:px-16 md:px-24">
             {{ $slot }}

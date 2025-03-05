@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <main class="max-w-screen min-h-screen bg-[#171923]">
+        <main class="max-w-screen min-h-screen bg-[#1b1b1c]">
             {{ $slot }}
         </main>
     </body>

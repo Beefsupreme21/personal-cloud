@@ -1,3 +1,3 @@
 <x-layout>
-    <div class="bg-red-500">Hello</div>
+    <div>Home Page</div>
 </x-layout>
