@@ -17,9 +17,9 @@
         <x-desktop-nav />
     </header>
 
-    <div class="flex flex-1 flex-col bg-[#1b1b1c] md:pl-64">
+    <div class="flex flex-1 flex-col bg-[#1b1b1c] md:pl-64 min-h-screen">
         <x-mobile-nav-toggle />
-        <main class="max-w-screen-lg min-h-screen sm:px-16 md:px-24">
+        <main>
             {{ $slot }}
         </main>
     </div>

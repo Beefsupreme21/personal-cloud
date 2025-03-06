@@ -47,7 +47,7 @@
                         </div>
                     </template>
                 </div>
-                     
+
             </div>
             <div class="flex flex-col items-center mt-4">
                 <div class="flex justify-center">
@@ -62,15 +62,15 @@
                     <button x-on:click="playerHit()" class="bg-red-500 text-white text-2xl font-bold py-3 px-6 ml-3 rounded-lg">Hit</button>
                 </div>
                 <div x-show="gamePhase === 'betting'">
-                    <button x-bind:disabled="currentBet === 0" 
-                        x-on:click="currentBet = 0" 
-                        x-bind:class="{'opacity-50 cursor-not-allowed': currentBet === 0, 'hover:bg-gray-600': currentBet !== 0}" 
+                    <button x-bind:disabled="currentBet === 0"
+                        x-on:click="currentBet = 0"
+                        x-bind:class="{'opacity-50 cursor-not-allowed': currentBet === 0, 'hover:bg-gray-600': currentBet !== 0}"
                         class="bg-gray-500 text-white text-2xl font-bold py-3 px-6 rounded-lg">
                         CLEAR
                     </button>
-                    <button x-bind:disabled="currentBet === 0" 
-                        x-on:click="placeBet()" 
-                        x-bind:class="{'opacity-50 cursor-not-allowed': currentBet === 0, 'hover:bg-red-600': currentBet !== 0}" 
+                    <button x-bind:disabled="currentBet === 0"
+                        x-on:click="placeBet()"
+                        x-bind:class="{'opacity-50 cursor-not-allowed': currentBet === 0, 'hover:bg-red-600': currentBet !== 0}"
                         class="bg-red-500 text-white text-2xl font-bold py-3 px-6 ml-3 rounded-lg">
                         PLAY
                     </button>
@@ -103,7 +103,7 @@
                 dealerHandValue: 0,
                 playerBalance: 1000,
                 currentBet: 0,
-                showCardValues: [false, true, true, true, true], 
+                showCardValues: [false, true, true, true, true],
                 resultsMessage: null,
                 gamePhase: 'betting',
 
@@ -111,7 +111,7 @@
                     this.gamePhase = 'betting';
                     this.deck = this.getDeck();
                 },
-        
+
                 getDeck() {
                     const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
                     const suits = ['♠', '♣', '♥', '♦'];
@@ -145,7 +145,7 @@
                     }
                     return this.shuffle(deck);
                 },
-        
+
                 shuffle(deck) {
                     for (let i = deck.length - 1; i > 0; i--) {
                         const j = Math.floor(Math.random() * (i + 1));
@@ -165,7 +165,7 @@
                     const imageName = `${suitName}_${valueName}`;
                     return `/images/cards/${imageName}.png`;
                 },
-        
+
                 async dealCards() {
                     this.drawCard('player');
                     await this.delay(500);
@@ -186,7 +186,7 @@
                         this.dealerWins();
                     }
                 },
-        
+
                 drawCard(player) {
                     const card = this.deck.shift();
                     if (player === 'player') {
@@ -266,7 +266,7 @@
 
                 placeBet() {
                     this.playerBalance -= this.currentBet;
-                    this.gamePhase = 'playing'; // Change phase to 'playing' after placing a bet
+                    this.gamePhase = 'playing';
                     this.dealCards();
                 },
 
@@ -336,5 +336,5 @@
             }))
         })
     </script>
-      
+
 </x-fullscreen-layout>

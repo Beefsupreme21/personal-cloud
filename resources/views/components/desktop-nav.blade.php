@@ -36,9 +36,9 @@
                     <a href="/games/quiz" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Quiz
                     </a>
-                    <a href="/games/quiz-with-database" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
+                    <!-- <a href="/games/quiz-with-database" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Quiz (SQL Database)
-                    </a>
+                    </a> -->
                     <a href="/games/war" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         War
                     </a>
@@ -82,20 +82,10 @@
                     </a>
                 @endif
 
-                <a href="/components" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-6 py-1 font-bold rounded-md">
+                <!-- <a href="/components" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-6 py-1 font-bold rounded-md">
                     <x-svg.user class="w-8 h-8" />
                     <span class="ml-2 uppercase">Components</span>
-                </a>
-
-                @if (str_contains(request()->url(), 'component-examples'))
-                    <a href="/component-examples/flash" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
-                        Flash
-                    </a>
-                    <a href="/projects/calculator" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
-                        Calculator
-                    </a>
-                @endif
-
+                </a> -->
 
                 <a href="/test" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center mt-8 px-6 py-1 font-bold rounded-md">
                     <x-svg.beaker class="w-8 h-8" />

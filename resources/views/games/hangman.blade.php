@@ -1,5 +1,5 @@
 <x-layout>
-    <div x-data="hangmanGame" class="max-w-lg mx-auto my-8">
+    <div x-data="hangmanGame" class="max-w-3xl mx-auto my-8">
         <div class="bg-white rounded-lg shadow-lg p-6">
             <div class="mb-4">
                 <span class="font-bold">Current Word:</span>
@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <script>
         document.addEventListener('alpine:init', () => {
@@ -52,7 +52,7 @@
                 displayWord: null,
                 showResults: false,
                 resultsMessage: null,
-                
+
                 get remainingAttempts() {
                     return this.maxAttempts - this.incorrectGuesses.length;
                 },
