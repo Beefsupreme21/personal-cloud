@@ -1,95 +1,150 @@
 <x-fullscreen-layout>
-    <div x-data="blackjack" x-init="startGame()" class="flex flex-col items-center py-4 bg-[#1C3A28]">
-        <div class="flex justify-between items-start">
-            <div class="fixed top-4 left-4 text-lg font-bold">
-                <a href="/">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+    <div x-data="blackjack" x-init="startGame()" class="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950 font-sans">
+        <!-- Header -->
+        <div class="fixed top-0 left-0 right-0 bg-black/50 backdrop-blur-sm z-50">
+            <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="/" class="flex items-center gap-2 text-white hover:text-emerald-400 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
                         <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L12 5 5 12l7 7 3.41-3.41z"/>
                     </svg>
-                    Back to Home
+                    <span>Back to Home</span>
                 </a>
-                <p class="mt-6">Balance: $<span x-text="playerBalance"></span></p>
+                <div class="text-2xl font-bold text-emerald-400">
+                    Balance: $<span x-text="playerBalance"></span>
+                </div>
             </div>
         </div>
-        <div class="flex flex-col h-screen w-full max-w-screen-md px-4 border border-red-500">
-            <div class="flex flex-col items-center mb-4">
-                <h2 class="font-bold text-lg">Dealer</h2>
-                <h3 x-text="dealerHandValue" class="text-lg font-bold mb-2"></h3>
-                <div class="flex justify-center">
-                    <template x-for="(card, index) in dealerCards">
-                        <img x-bind:src="showCardValues[index] ? getCardImage(card) : '/images/cards/back-blue.png'" class="inline-block bg-white border border-gray-400 rounded-md p-1 m-1" alt="">
+
+        <!-- Main Game Area -->
+        <div class="pt-20 pb-32 px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Dealer Section -->
+                <div class="bg-black/30 rounded-2xl p-6 mb-8 backdrop-blur-sm">
+                    <h2 class="text-2xl font-bold text-white mb-4">Dealer</h2>
+                    <div class="flex justify-center gap-4 mb-2">
+                        <template x-for="(card, index) in dealerCards">
+                            <div class="transform hover:scale-105 transition-transform">
+                                <img x-bind:src="showCardValues[index] ? getCardImage(card) : '/images/cards/back-blue.png'"
+                                    class="w-24 h-36 object-contain rounded-lg shadow-xl"
+                                    alt="Card">
+                            </div>
+                        </template>
+                    </div>
+                    <div class="text-center text-xl font-bold text-emerald-400" x-text="dealerHandValue"></div>
+                </div>
+
+                <!-- Game Status -->
+                <div class="text-center mb-8">
+                    <div x-show="gamePhase === 'betting'"
+                        class="text-2xl font-bold text-white animate-pulse">
+                        Place Your Bet
+                    </div>
+                    <div x-show="gamePhase === 'playing'"
+                        class="text-2xl font-bold text-white">
+                        Hit or Stand
+                    </div>
+                    <div x-show="gamePhase === 'gameOver'">
+                        <p x-text="resultsMessage"
+                            class="text-3xl font-bold text-emerald-400 animate-bounce">
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Player Section -->
+                <div class="bg-black/30 rounded-2xl p-6 mb-8 backdrop-blur-sm">
+                    <h2 class="text-2xl font-bold text-white mb-4">Your Hand</h2>
+                    <div class="flex justify-center gap-4 mb-4">
+                        <template x-for="card in playerCards">
+                            <div class="transform hover:scale-105 transition-transform">
+                                <img x-bind:src="getCardImage(card)"
+                                    class="w-24 h-36 object-contain rounded-lg shadow-xl"
+                                    alt="Card">
+                            </div>
+                        </template>
+                    </div>
+                    <div class="text-center text-xl font-bold text-emerald-400" x-text="playerHandValue"></div>
+                </div>
+
+                <!-- Current Bet -->
+                <div class="text-center mb-8">
+                    <div class="text-3xl font-bold text-white">
+                        Current Bet: $<span x-text="currentBet"></span>
+                    </div>
+                    <div class="flex justify-center gap-4 mt-4">
+                        <template x-for="chip in getChipsForDisplay()">
+                            <div class="flex items-center gap-2 bg-black/30 px-4 py-2 rounded-full">
+                                <template x-if="chip.denomination === 1">
+                                    <x-svg.chip-1 class="w-8 h-8"/>
+                                </template>
+                                <template x-if="chip.denomination === 5">
+                                    <x-svg.chip-5 class="w-8 h-8"/>
+                                </template>
+                                <template x-if="chip.denomination === 25">
+                                    <x-svg.chip-25 class="w-8 h-8"/>
+                                </template>
+                                <template x-if="chip.denomination === 100">
+                                    <x-svg.chip-100 class="w-8 h-8"/>
+                                </template>
+                                <span x-text="chip.count" class="text-white font-bold"></span>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex justify-center gap-4 mb-8">
+                    <template x-if="gamePhase === 'playing'">
+                        <div class="flex gap-4">
+                            <button x-on:click="playerStand()"
+                                class="px-8 py-4 bg-gray-700 hover:bg-gray-600 text-white text-xl font-bold rounded-xl shadow-lg transition-all duration-200 hover:scale-105">
+                                Stand
+                            </button>
+                            <button x-on:click="playerHit()"
+                                class="px-8 py-4 bg-red-600 hover:bg-red-500 text-white text-xl font-bold rounded-xl shadow-lg transition-all duration-200 hover:scale-105">
+                                Hit
+                            </button>
+                        </div>
                     </template>
-                </div>
-            </div>
-            <div class="flex-grow flex flex-col items-center justify-center">
-                <div x-show="gamePhase === 'betting'">Place your bet</div>
-                <div x-show="gamePhase === 'playing'">Hit or stand</div>
-                <div x-show="gamePhase === 'gameOver'">
-                    <p x-text="resultsMessage" class="text-lg font-bold mt-4"></p>
-                </div>
-                <h2 class="font-bold text-lg">$<span x-text="currentBet"></span></h2>
-                <div class="flex justify-center">
-                    <template x-for="chip in getChipsForDisplay()">
-                        <div class="flex items-center space-x-2">
-                            <template x-if="chip.denomination === 1">
-                                <x-svg.chip-1/>
-                            </template>
-                            <template x-if="chip.denomination === 5">
-                                <x-svg.chip-5/>
-                            </template>
-                            <template x-if="chip.denomination === 25">
-                                <x-svg.chip-25/>
-                            </template>
-                            <template x-if="chip.denomination === 100">
-                                <x-svg.chip-100/>
-                            </template>
-                            <span x-text="chip.count" class="font-bold"></span>
+                    <template x-if="gamePhase === 'betting'">
+                        <div class="flex gap-4">
+                            <button x-bind:disabled="currentBet === 0"
+                                x-on:click="currentBet = 0"
+                                x-bind:class="{'opacity-50 cursor-not-allowed': currentBet === 0, 'hover:bg-gray-600': currentBet !== 0}"
+                                class="px-8 py-4 bg-gray-700 text-white text-xl font-bold rounded-xl shadow-lg transition-all duration-200">
+                                Clear
+                            </button>
+                            <button x-bind:disabled="currentBet === 0"
+                                x-on:click="placeBet()"
+                                x-bind:class="{'opacity-50 cursor-not-allowed': currentBet === 0, 'hover:bg-red-500': currentBet !== 0}"
+                                class="px-8 py-4 bg-red-600 text-white text-xl font-bold rounded-xl shadow-lg transition-all duration-200">
+                                Deal
+                            </button>
                         </div>
                     </template>
                 </div>
-
-            </div>
-            <div class="flex flex-col items-center mt-4">
-                <div class="flex justify-center">
-                    <template x-for="card in playerCards">
-                        <img x-bind:src="getCardImage(card)" class="inline-block bg-white border border-gray-400 rounded-md p-1 m-1">
-                    </template>
-                </div>
-            </div>
-            <div class="flex justify-center mb-12">
-                <div x-show="gamePhase === 'playing'">
-                    <button x-on:click="playerStand()" class="bg-gray-500 text-white text-2xl font-bold py-3 px-6 rounded-lg">Stand</button>
-                    <button x-on:click="playerHit()" class="bg-red-500 text-white text-2xl font-bold py-3 px-6 ml-3 rounded-lg">Hit</button>
-                </div>
-                <div x-show="gamePhase === 'betting'">
-                    <button x-bind:disabled="currentBet === 0"
-                        x-on:click="currentBet = 0"
-                        x-bind:class="{'opacity-50 cursor-not-allowed': currentBet === 0, 'hover:bg-gray-600': currentBet !== 0}"
-                        class="bg-gray-500 text-white text-2xl font-bold py-3 px-6 rounded-lg">
-                        CLEAR
-                    </button>
-                    <button x-bind:disabled="currentBet === 0"
-                        x-on:click="placeBet()"
-                        x-bind:class="{'opacity-50 cursor-not-allowed': currentBet === 0, 'hover:bg-red-600': currentBet !== 0}"
-                        class="bg-red-500 text-white text-2xl font-bold py-3 px-6 ml-3 rounded-lg">
-                        PLAY
-                    </button>
-                </div>
             </div>
         </div>
-        <div class="fixed bottom-4 right-4 space-x-2">
-            <button x-on:click="if (currentBet < playerBalance) { currentBet += 1 }">
-                <x-svg.chip-1/>
-            </button>
-            <button x-on:click="if (currentBet < playerBalance) { currentBet += 5 }">
-                <x-svg.chip-5/>
-            </button>
-            <button x-on:click="if (currentBet < playerBalance) { currentBet += 25 }">
-                <x-svg.chip-25/>
-            </button>
-            <button x-on:click="if (currentBet < playerBalance) { currentBet += 100 }">
-                <x-svg.chip-100/>
-            </button>
+
+        <!-- Betting Chips - Only show during betting phase -->
+        <div x-show="gamePhase === 'betting'" class="fixed bottom-0 left-0 right-0 bg-black/50 backdrop-blur-sm py-4">
+            <div class="max-w-4xl mx-auto flex justify-center gap-6">
+                <button x-on:click="if (currentBet < playerBalance) { currentBet += 1 }"
+                    class="transform hover:scale-110 transition-transform">
+                    <x-svg.chip-1 class="w-12 h-12"/>
+                </button>
+                <button x-on:click="if (currentBet < playerBalance) { currentBet += 5 }"
+                    class="transform hover:scale-110 transition-transform">
+                    <x-svg.chip-5 class="w-12 h-12"/>
+                </button>
+                <button x-on:click="if (currentBet < playerBalance) { currentBet += 25 }"
+                    class="transform hover:scale-110 transition-transform">
+                    <x-svg.chip-25 class="w-12 h-12"/>
+                </button>
+                <button x-on:click="if (currentBet < playerBalance) { currentBet += 100 }"
+                    class="transform hover:scale-110 transition-transform">
+                    <x-svg.chip-100 class="w-12 h-12"/>
+                </button>
+            </div>
         </div>
     </div>
 

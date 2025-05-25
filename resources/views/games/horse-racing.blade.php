@@ -6,8 +6,8 @@
                 <p class="text-2xl text-center mb-4 font-bold">Choose Horse</p>
                 <div class="flex justify-center flex-wrap">
                     <template x-for="(horse, index) in horses">
-                        <div x-on:click="selectedHorse = index" 
-                             x-bind:class="{ 'bg-gray-600': selectedHorse === index }" 
+                        <div x-on:click="selectedHorse = index"
+                             x-bind:class="{ 'bg-gray-600': selectedHorse === index }"
                              class="mx-4 my-2 cursor-pointer rounded-lg p-4 transition-colors duration-200 ease-in-out">
                             <img x-bind:src="getHorsePortrait(horse)" class="h-36 w-36 rounded-lg" />
                             <p class="text-center font-bold mt-2 text-lg" x-text="horse.name"></p>
@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('game', () => ({
@@ -94,10 +94,10 @@
                 money: 500,
                 raceStarted: false,
                 selectedHorse: null,
-                betAmount: 100, 
+                betAmount: 100,
                 timer: 0,
                 bets: {},
-                resultsMessage: null, 
+                resultsMessage: null,
                 showBetScreen: true,
                 showRaceScreen: false,
 
@@ -138,15 +138,15 @@
                     this.startTimer();
                     this.horses.forEach((horse, index) => {
                         horse.speed = this.calculateSpeed(horse.minSpeed, horse.maxSpeed);
-    
+
                         horse.intervalId = setInterval(() => {
                             this.updateHorsePosition(index);
                         }, 10 + Math.random() * 10);
-    
+
                         horse.animationIntervalId = setInterval(() => {
                             horse.animationIndex = (horse.animationIndex % 12) + 1;
                         }, 50);
-    
+
                         horse.speedIntervalId = setInterval(() => {
                             horse.speed = this.calculateSpeed(horse.minSpeed, horse.maxSpeed);
                         }, 1000);
@@ -172,7 +172,7 @@
                     this.timer = 0;
                     this.resultsMessage = null;
                 },
-    
+
                 updateHorsePosition(horseIndex) {
                     const horse = this.horses[horseIndex];
                     horse.position += horse.speed;
@@ -180,7 +180,7 @@
                         this.finished(horseIndex);
                     }
                 },
-    
+
                 calculateSpeed(minSpeed, maxSpeed) {
                     return Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed;
                 },
@@ -231,7 +231,7 @@
                         this.resultsMessage = `Congratulations, you have won $${payout}!`;
                     }
                 },
-    
+
                 finished(horseIndex) {
                     const horse = this.horses[horseIndex];
                     clearInterval(horse.intervalId);
@@ -242,10 +242,10 @@
                     if (this.finishedHorses.length == 1) {
                         this.winner = this.finishedHorses[0];
                         this.payOut();
-                    } 
+                    }
                     if (this.finishedHorses.length == this.horses.length) {
                         this.stopTimer();
-                    } 
+                    }
 
                     horse.time = this.timer;
                     this.horses[horseIndex].time = this.timer;
@@ -257,5 +257,5 @@
             }));
         });
     </script>
-    
+
 </x-fullscreen-layout>

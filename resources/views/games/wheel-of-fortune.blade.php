@@ -1,74 +1,74 @@
 <x-layout>
-    <div x-data="wheelOfFortune" class="max-w-lg mx-auto my-8">
-        <div x-show="!gameStarted" class="flex flex-col items-center">
-            <div class="w-full h-64 mb-4 flex justify-center items-center">
-                <img src="{{ asset('images/wheel-of-fortune.png') }}" alt="" class="w-auto h-full object-contain">
+    <div x-data="wheelOfFortune" class="max-w-xl mx-auto my-12">
+        <div class="bg-[#1b1b1c] rounded-2xl shadow-2xl p-8 border border-gray-700">
+            <div x-show="!gameStarted" class="flex flex-col items-center">
+                <div class="w-full h-64 mb-4 flex justify-center items-center">
+                    <img src="{{ asset('images/wheel-of-fortune.png') }}" alt="" class="w-auto h-full object-contain">
+                </div>
+                <button x-on:click="startGame()" class="bg-[#23232a] hover:bg-[#23232a]/80 text-[#77C1D2] font-bold py-3 px-8 rounded-xl text-xl shadow-lg transition-all duration-150 border border-[#77C1D2] w-80 mb-4">
+                  Start Game
+                </button>
+                <div class="flex w-full gap-2">
+                  <button x-on:click="currentCategory = null" class="flex-1 text-center py-2 px-4 rounded-lg border-2 border-[#77C1D2] bg-[#23232a] text-[#77C1D2] hover:bg-[#23232a]/80 focus:outline-none" x-bind:class="currentCategory === null ? 'ring-2 ring-[#77C1D2] bg-[#1b1b1c]' : ''">
+                    Any
+                  </button>
+                  <button x-on:click="currentCategory = 'classic movie'" class="flex-1 text-center py-2 px-4 rounded-lg border-2 border-[#77C1D2] bg-[#23232a] text-[#77C1D2] hover:bg-[#23232a]/80 focus:outline-none" x-bind:class="currentCategory === 'classic movie' ? 'ring-2 ring-[#77C1D2] bg-[#1b1b1c]' : ''">
+                    Classic Movie
+                  </button>
+                  <button x-on:click="currentCategory = 'landmark'" class="flex-1 text-center py-2 px-4 rounded-lg border-2 border-[#77C1D2] bg-[#23232a] text-[#77C1D2] hover:bg-[#23232a]/80 focus:outline-none" x-bind:class="currentCategory === 'landmark' ? 'ring-2 ring-[#77C1D2] bg-[#1b1b1c]' : ''">
+                    Landmark
+                  </button>
+                </div>
             </div>
-            <button x-on:click="startGame()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-80 mb-4">
-              Start Game
-            </button>
-            <div class="flex">
-              <button x-on:click="currentCategory = null" class="flex-1 mr-2 text-center py-2 px-4 rounded-lg border-2 border-gray-400 bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-200" x-bind:class="currentCategory === null ? 'border-blue-500 text-blue-500 bg-white' : ''">
-                Any
-              </button>
-              <button x-on:click="currentCategory = 'classic movie'" class="flex-1 mr-2 text-center py-2 px-4 rounded-lg border-2 border-gray-400 bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-200" x-bind:class="currentCategory === 'classic movie' ? 'border-blue-500 text-blue-500 bg-white' : ''">
-                Classic Movie
-              </button>
-              <button x-on:click="currentCategory = 'landmark'" class="flex-1 text-center py-2 px-4 rounded-lg border-2 border-gray-400 bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:bg-gray-200" x-bind:class="currentCategory === 'landmark' ? 'border-blue-500 text-blue-500 bg-white' : ''">
-                Landmark
-              </button>
-            </div>
-        </div>
-          
-        <div x-show="gameStarted" x-cloak class="bg-white rounded-lg shadow-lg p-6">
-            <h1 x-text="currentCategory" class="text-center capitalize"></h1>
-            <div class="flex flex-wrap justify-center mb-8">
-                <template x-for="(letter, index) in displayWord" :key="index">
-                    <div>
-                        <template x-if="letter == ' '">
-                            <div class="bg-white w-8 h-8 mx-1 my-1 text-center capitalize flex items-center" x-text="letter"></div>
-                        </template>
-                        <template x-if="letter !== ' '">
-                            <div class="border border-black bg-white w-8 h-8 mx-1 my-1 text-center capitalize flex items-center justify-center font-bold text-3xl" x-text="letter"></div>
-                        </template>
-                    </div>
-                </template>
-            </div>
-            <div class="mb-4">
-                <span class="font-bold">Remaining Attempts:</span>
-                <span x-text="remainingAttempts"></span>
-            </div>
-            <div class="mb-4">
-                <span class="font-bold">Guessed Letters:</span>
-                <span x-text="Array.from(guessedLetters).join(', ')"></span>
-            </div>
-            <div class="flex flex-wrap mb-4">
-                <template x-for="letter in letters">
-                    <button x-text="letter"
-                            x-on:click="guessLetter(letter)"
-                            class="inline-block hover:bg-gray-400 focus:outline-none focus:shadow-outline capitalize rounded-full px-3 py-1 mx-1 text-white"
-                            x-bind:class="{
-                                'hover:bg-blue-400': !guessedLetters.has(letter),
-                                'bg-gray-300': !displayWord.includes(letter),
-                                'bg-green-500': displayWord.includes(letter),
-                                'bg-red-500': incorrectGuesses.includes(letter)
-                            }">
-                    </button>
-                </template>
-            </div>
-            <div x-show="showResults" class="mb-4">
-                <p class="font-bold" x-text="resultsMessage"></p>
+            <div x-show="gameStarted" x-cloak>
+                <h1 x-text="currentCategory" class="text-center capitalize text-[#77C1D2] mb-4"></h1>
+                <div class="flex flex-wrap justify-center mb-8">
+                    <template x-for="(letter, index) in displayWord" :key="index">
+                        <div>
+                            <template x-if="letter == ' '">
+                                <div class="bg-[#1b1b1c] w-8 h-8 mx-1 my-1 text-center capitalize flex items-center"></div>
+                            </template>
+                            <template x-if="letter !== ' '">
+                                <div class="border border-[#77C1D2] bg-[#23232a] w-8 h-8 mx-1 my-1 text-center capitalize flex items-center justify-center font-bold text-3xl text-[#77C1D2]" x-text="letter"></div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <div class="mb-4 text-[#77C1D2]">
+                    <span class="font-bold">Remaining Attempts:</span>
+                    <span x-text="remainingAttempts"></span>
+                </div>
+                <div class="mb-4 text-[#77C1D2]">
+                    <span class="font-bold">Guessed Letters:</span>
+                    <span x-text="Array.from(guessedLetters).join(', ')"></span>
+                </div>
+                <div class="flex flex-wrap justify-center gap-2 mb-4">
+                    <template x-for="letter in letters">
+                        <button x-text="letter"
+                                x-on:click="guessLetter(letter)"
+                                class="uppercase rounded-full px-4 py-2 text-lg font-bold shadow transition-all duration-100 focus:outline-none cursor-pointer"
+                                x-bind:class="{
+                                    'bg-[#23232a] text-[#77C1D2] hover:bg-[#23232a]/80': !guessedLetters.has(letter) && !displayWord.includes(letter),
+                                    'bg-[#77C1D2] text-[#1b1b1c]': guessedLetters.has(letter) && displayWord.includes(letter),
+                                    'bg-gray-300 text-gray-500 cursor-not-allowed': guessedLetters.has(letter) && !displayWord.includes(letter),
+                                    'bg-red-500 text-white': incorrectGuesses.includes(letter)
+                                }">
+                        </button>
+                    </template>
+                </div>
+                <div x-show="showResults" class="mb-4 text-center">
+                    <p class="font-bold text-2xl" :class="resultsMessage === 'You Win' ? 'text-[#77C1D2]' : 'text-red-400'" x-text="resultsMessage"></p>
+                </div>
             </div>
         </div>
     </div>
-    
 
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('wheelOfFortune', () => ({
                 phrases: [
                     { phrase: 'caddyshack', category: 'classic movie' },
-                    { phrase: 'ghostbusters', category: 'classic movie' },                    
+                    { phrase: 'ghostbusters', category: 'classic movie' },
                     { phrase: 'sydney opera house', category: 'landmark'},
                 ],
                 letters: "abcdefghijklmnopqrstuvwxyz".split(""),
@@ -78,7 +78,7 @@
                 showResults: false,
                 resultsMessage: null,
                 gameStarted: false,
-                currentCategory: null, 
+                currentCategory: null,
 
                 startGame() {
                     let categoryPhrases = this.phrases;
@@ -96,7 +96,7 @@
                     this.gameStarted = true;
                 },
 
-                
+
                 get remainingAttempts() {
                     return this.maxAttempts - this.incorrectGuesses.length;
                 },

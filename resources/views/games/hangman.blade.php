@@ -1,46 +1,45 @@
 <x-layout>
-    <div x-data="hangmanGame" class="max-w-3xl mx-auto my-8">
-        <div class="bg-white rounded-lg shadow-lg p-6">
-            <div class="mb-4">
-                <span class="font-bold">Current Word:</span>
-                <span x-text="word"></span>
+    <div x-data="hangmanGame" class="max-w-xl mx-auto my-12">
+        <div class="bg-gray-900 rounded-2xl shadow-2xl p-8 border border-gray-700">
+            <div class="mb-6 text-center">
+                <span class="block text-lg font-bold text-gray-300 mb-2">Word:</span>
+                <span x-text="displayWord.split('').join(' ')" class="text-4xl font-mono tracking-widest text-emerald-300 bg-gray-800 rounded-lg px-4 py-2"></span>
+            </div>
+            <div class="flex justify-between mb-4">
+                <div>
+                    <span class="font-bold text-gray-400">Max Attempts:</span>
+                    <span x-text="maxAttempts" class="text-gray-200"></span>
+                </div>
+                <div>
+                    <span class="font-bold text-gray-400">Remaining:</span>
+                    <span x-text="remainingAttempts" class="text-gray-200"></span>
+                </div>
             </div>
             <div class="mb-4">
-                <span class="font-bold">Displayed Word:</span>
-                <span x-text="displayWord"></span>
+                <span class="font-bold text-gray-400">Guessed:</span>
+                <span x-text="Array.from(guessedLetters).join(', ')" class="text-gray-200"></span>
             </div>
-            <div class="mb-4">
-                <span class="font-bold">Max Attempts:</span>
-                <span x-text="maxAttempts"></span>
+            <div x-show="showResults" class="mb-6 text-center">
+                <p x-text="resultsMessage" class="text-2xl font-bold" :class="resultsMessage === 'You Win' ? 'text-emerald-400' : 'text-red-400'"></p>
             </div>
-            <div class="mb-4">
-                <span class="font-bold">Remaining Attempts:</span>
-                <span x-text="remainingAttempts"></span>
-            </div>
-            <div class="mb-4">
-                <span class="font-bold">Guessed Letters:</span>
-                <span x-text="Array.from(guessedLetters).join(', ')"></span>
-            </div>
-            <div x-show="showResults" class="mb-4">
-                <p class="font-bold" x-text="resultsMessage"></p>
-            </div>
-            <div class="flex flex-wrap mb-4">
+            <div class="flex flex-wrap justify-center gap-2 mb-2">
                 <template x-for="letter in letters">
                     <button x-text="letter"
                             x-on:click="guessLetter(letter)"
-                            class="inline-block hover:bg-gray-400 focus:outline-none focus:shadow-outline capitalize rounded-full px-3 py-1 mx-1 text-white"
+                            class="uppercase rounded-full px-4 py-2 text-lg font-bold shadow transition-all duration-100 focus:outline-none cursor-pointer"
+                            x-bind:disabled="showResults"
                             x-bind:class="{
-                                'hover:bg-blue-400': !guessedLetters.has(letter),
-                                'bg-gray-300': !displayWord.includes(letter),
-                                'bg-green-500': displayWord.includes(letter),
-                                'bg-red-500': incorrectGuesses.includes(letter)
+                                'bg-emerald-600 text-white hover:bg-emerald-700': !guessedLetters.has(letter) && displayWord.includes(letter),
+                                'bg-gray-700 text-white hover:bg-gray-600': !guessedLetters.has(letter) && !displayWord.includes(letter),
+                                'bg-gray-300 text-gray-500 cursor-not-allowed': guessedLetters.has(letter) && !displayWord.includes(letter),
+                                'bg-emerald-400 text-white': guessedLetters.has(letter) && displayWord.includes(letter),
+                                'bg-red-500 text-white': incorrectGuesses.includes(letter)
                             }">
                     </button>
                 </template>
             </div>
         </div>
     </div>
-
 
     <script>
         document.addEventListener('alpine:init', () => {
@@ -62,7 +61,7 @@
                 },
 
                 guessLetter(letter) {
-                    if (this.guessedLetters.has(letter)) {
+                    if (this.guessedLetters.has(letter) || this.showResults) {
                         return;
                     }
 
@@ -79,7 +78,7 @@
                             this.resultsMessage = 'You Win';
                         }
                     } else {
-                        if (this.remainingAttempts === 0) {
+                        if (this.remainingAttempts <= 1) {
                             this.showResults = true;
                             this.resultsMessage = 'You Lose';
                         }

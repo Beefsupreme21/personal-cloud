@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Green background -->
+    <rect width="800" height="600" fill="#215732"/>
+
+    <!-- Darker green circle for depth -->
+    <circle cx="400" cy="300" r="300" fill="#11281a"/>
+
+    <!-- BLACKJACK text -->
+    <text x="400" y="300"
+          font-family="Arial Black, sans-serif"
+          font-size="72"
+          fill="#ffffff"
+          text-anchor="middle"
+          dominant-baseline="middle"
+          font-weight="900">
+        BLACKJACK
+    </text>
+</svg>

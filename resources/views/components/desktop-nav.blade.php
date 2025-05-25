@@ -21,18 +21,18 @@
                     <a href="/games/blackjack" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Blackjack
                     </a>
-                    <a href="/games/candyland" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
+                    <!-- <a href="/games/candyland" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Candyland
-                    </a>
+                    </a> -->
                     <a href="/games/hangman" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Hangman
                     </a>
                     <a href="/games/horse-racing" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Horse Racing
                     </a>
-                    <a href="/games/pokemon-quiz" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
+                    <!-- <a href="/games/pokemon-quiz" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Pokemon Quiz (API)
-                    </a>
+                    </a> -->
                     <a href="/games/quiz" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Quiz
                     </a>
