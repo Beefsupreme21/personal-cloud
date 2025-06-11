@@ -55,6 +55,9 @@
                 <!-- <a href="/games/quiz-with-database" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                     Quiz (SQL Database)
                 </a> -->
+                <a href="/games/snake" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
+                    Snake
+                </a>
                 <a href="/games/war" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                     War
                 </a>

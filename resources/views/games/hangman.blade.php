@@ -1,26 +1,26 @@
 <x-layout>
     <div x-data="hangmanGame" class="max-w-xl mx-auto my-12">
-        <div class="bg-gray-900 rounded-2xl shadow-2xl p-8 border border-gray-700">
+        <div class="bg-[#1b1b1c] rounded-2xl shadow-2xl p-8 border border-gray-700">
             <div class="mb-6 text-center">
-                <span class="block text-lg font-bold text-gray-300 mb-2">Word:</span>
-                <span x-text="displayWord.split('').join(' ')" class="text-4xl font-mono tracking-widest text-emerald-300 bg-gray-800 rounded-lg px-4 py-2"></span>
+                <span class="block text-lg font-bold text-[#77C1D2] mb-2">Word:</span>
+                <span x-text="displayWord.split('').join(' ')" class="text-4xl font-mono tracking-widest text-[#77C1D2] bg-[#23232a] rounded-lg px-4 py-2"></span>
             </div>
             <div class="flex justify-between mb-4">
                 <div>
-                    <span class="font-bold text-gray-400">Max Attempts:</span>
-                    <span x-text="maxAttempts" class="text-gray-200"></span>
+                    <span class="font-bold text-[#77C1D2]">Max Attempts:</span>
+                    <span x-text="maxAttempts" class="text-[#77C1D2]"></span>
                 </div>
                 <div>
-                    <span class="font-bold text-gray-400">Remaining:</span>
-                    <span x-text="remainingAttempts" class="text-gray-200"></span>
+                    <span class="font-bold text-[#77C1D2]">Remaining:</span>
+                    <span x-text="remainingAttempts" class="text-[#77C1D2]"></span>
                 </div>
             </div>
             <div class="mb-4">
-                <span class="font-bold text-gray-400">Guessed:</span>
-                <span x-text="Array.from(guessedLetters).join(', ')" class="text-gray-200"></span>
+                <span class="font-bold text-[#77C1D2]">Guessed:</span>
+                <span x-text="Array.from(guessedLetters).join(', ')" class="text-[#77C1D2]"></span>
             </div>
             <div x-show="showResults" class="mb-6 text-center">
-                <p x-text="resultsMessage" class="text-2xl font-bold" :class="resultsMessage === 'You Win' ? 'text-emerald-400' : 'text-red-400'"></p>
+                <p x-text="resultsMessage" class="text-2xl font-bold" :class="resultsMessage === 'You Win' ? 'text-[#77C1D2]' : 'text-red-400'"></p>
             </div>
             <div class="flex flex-wrap justify-center gap-2 mb-2">
                 <template x-for="letter in letters">
@@ -29,11 +29,10 @@
                             class="uppercase rounded-full px-4 py-2 text-lg font-bold shadow transition-all duration-100 focus:outline-none cursor-pointer"
                             x-bind:disabled="showResults"
                             x-bind:class="{
-                                'bg-emerald-600 text-white hover:bg-emerald-700': !guessedLetters.has(letter) && displayWord.includes(letter),
-                                'bg-gray-700 text-white hover:bg-gray-600': !guessedLetters.has(letter) && !displayWord.includes(letter),
-                                'bg-gray-300 text-gray-500 cursor-not-allowed': guessedLetters.has(letter) && !displayWord.includes(letter),
-                                'bg-emerald-400 text-white': guessedLetters.has(letter) && displayWord.includes(letter),
-                                'bg-red-500 text-white': incorrectGuesses.includes(letter)
+                                'bg-[#23232a] text-[#77C1D2] hover:bg-[#23232a]/80 border border-[#77C1D2]': !guessedLetters.has(letter) && !displayWord.includes(letter),
+                                'bg-[#77C1D2] text-[#1b1b1c] border border-[#77C1D2]': guessedLetters.has(letter) && displayWord.includes(letter),
+                                'bg-gray-300 text-gray-500 cursor-not-allowed border border-gray-400': guessedLetters.has(letter) && !displayWord.includes(letter),
+                                'bg-red-500 text-white border border-red-500': incorrectGuesses.includes(letter)
                             }">
                     </button>
                 </template>
