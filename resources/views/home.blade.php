@@ -1,21 +1,30 @@
 <x-layout>
     <div class="py-24 sm:py-32 relative overflow-hidden">
-        <!-- Background Design Elements -->
         <div class="absolute inset-0 pointer-events-none">
-            <!-- Circles -->
-            <div class="absolute bottom-40 right-10 w-60 h-60 border border-[#77C1D2] opacity-10 rounded-full"></div>
-            <!-- Large background circle -->
-            <div class="absolute -top-32 -right-32 w-96 h-96 border border-[#77C1D2] opacity-10 rounded-full"></div>
-            <div class="absolute -bottom-32 -left-32 w-80 h-80 border border-[#77C1D2] opacity-10 rounded-full"></div>
+
+            <!-- Grid pattern overlay -->
+            <!-- <div class="absolute inset-0 bg-[linear-gradient(rgba(119,193,210,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(119,193,210,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div> -->
+
+            <!-- Radial fade from center -->
+            <div class="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-gray-900/10"></div>
+
+            <!-- Subtle grid variation -->
+            <div class="absolute inset-0 bg-[linear-gradient(rgba(119,193,210,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(119,193,210,0.02)_1px,transparent_1px)] bg-[size:100px_100px] opacity-40"></div>
+
+            <!-- Floating geometric elements -->
+            <div class="absolute top-20 right-20 w-8 h-8 border border-[#77C1D2]/20 rounded-lg animate-pulse rotate-12"></div>
+
+            <!-- Subtle gradient orbs -->
+            <div class="absolute top-1/3 right-1/3 w-32 h-32 bg-gradient-to-br from-[#77C1D2]/8 to-transparent rounded-full blur-xl"></div>
+            <div class="absolute bottom-1/4 left-1/4 w-24 h-24 bg-gradient-to-tr from-[#77C1D2]/6 to-transparent rounded-full blur-xl"></div>
         </div>
 
         <div class="mx-auto max-w-7xl px-6 lg:px-8 relative">
-            <!-- Hero Section -->
             <li class="rounded-2xl flex flex-col md:flex-row items-center gap-8">
-                <img class="size-48 rounded-full md:size-56" src="/images/profile.jpg" alt="">
+                <img class="size-48 rounded-full md:size-48" src="/images/profile.png" alt="">
                 <div class="flex flex-col justify-center md:justify-start items-center md:items-start text-left w-full">
-                    <h1 class="text-4xl font-bold text-white mb-2">Hey, I'm Cory 👋</h1>
-                    <p class="text-lg text-[#77C1D2] mb-4">Welcome to my site! I'm a Laravel developer who enjoys building things with the TALL stack, Tailwind, Alpine, Laravel, and Livewire. I use this site to share projects I've built for fun and learning. Feel free to try them out below!</p>
+                    <h1 class="text-4xl font-bold text-white mb-2 playfair-display">Hey, I'm Cory 👋</h1>
+                    <p class="text-lg text-[#77C1D2] mb-4 handlee-regular">Welcome to my site! I'm a Laravel developer who enjoys building things with the TALL stack, Tailwind, Alpine, Laravel, and Livewire. I use this site to share projects I've built for fun and learning. Feel free to try them out below!</p>
                     <ul role="list" class="flex gap-x-6">
                         <li>
                             <a href="https://github.com/Beefsupreme21" class="text-gray-400 hover:text-gray-300" target="_blank" rel="noopener">
@@ -37,10 +46,9 @@
                 </div>
             </li>
 
-            <!-- Skills and Tools Section -->
             <div class="mt-24">
                 <div class="mx-auto max-w-2xl lg:mx-0">
-                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl">Skills & Tools</h2>
+                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl playfair-display">Skills/Tools</h2>
                 </div>
                 <div class="flex gap-12 mt-10">
                     <div class="text-center">
@@ -78,30 +86,29 @@
                 </div>
             </div>
 
-            <!-- Featured Projects -->
             <div class="mx-auto max-w-2xl lg:mx-0 mt-24">
-                <h2 class="text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl">Featured Projects</h2>
+                <h2 class="text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl playfair-display">Featured Projects</h2>
             </div>
 
             <ul role="list" class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4">
                 <li>
-                    <a href="/games/blackjack" class="block group">
-                        <div class="aspect-[14/13] mb-4 w-full rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                            <span class="text-white text-3xl md:text-2xl lg:text-2xl xl:text-3xl font-black tracking-wide">BLACKJACK</span>
+                    <a href="/games/wordle" class="block group">
+                        <div class="aspect-[14/13] mb-4 w-full rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                            <span class="text-white text-3xl md:text-2xl lg:text-2xl xl:text-3xl font-black tracking-wide">WORDLE</span>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Blackjack</h3>
-                        <p class="text-base/7 text-gray-300">Classic casino card game with betting, dealer AI, and realistic gameplay</p>
+                        <h3 class="text-lg font-semibold text-white mb-2">Wordle</h3>
+                        <p class="text-base/7 text-gray-300">Classic Wordle with streak tracking</p>
                         <p class="text-sm/6 text-[#77C1D2] mt-2">🎮 Game</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/projects/pokemon-list" class="block group">
-                        <div class="aspect-[14/13] mb-4 w-full rounded-2xl bg-gradient-to-br from-red-400 to-red-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                            <span class="text-white text-3xl md:text-2xl lg:text-2xl xl:text-3xl font-black tracking-wide">POKÉDEX</span>
+                    <a href="/games/snake" class="block group">
+                        <div class="aspect-[14/13] mb-4 w-full rounded-2xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                            <span class="text-white text-3xl md:text-2xl lg:text-2xl xl:text-3xl font-black tracking-wide">SNAKE</span>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Pokédex</h3>
-                        <p class="text-base/7 text-gray-300">Interactive Pokémon database with search, filters, and detailed stats</p>
-                        <p class="text-sm/6 text-[#77C1D2] mt-2">🛠️ Project</p>
+                        <h3 class="text-lg font-semibold text-white mb-2">Snake</h3>
+                        <p class="text-base/7 text-gray-300">High score tracking</p>
+                        <p class="text-sm/6 text-[#77C1D2] mt-2">🎮 Game</p>
                     </a>
                 </li>
                 <li>
@@ -110,155 +117,21 @@
                             <span class="text-white text-3xl md:text-2xl lg:text-2xl xl:text-3xl font-black tracking-wide">MEMORY</span>
                         </div>
                         <h3 class="text-lg font-semibold text-white mb-2">Memory Game</h3>
-                        <p class="text-base/7 text-gray-300">Brain training game with multiple difficulty levels and scoring</p>
+                        <p class="text-base/7 text-gray-300">Multiple difficulty levels and scoring</p>
                         <p class="text-sm/6 text-[#77C1D2] mt-2">🛠️ Project</p>
                     </a>
                 </li>
+                <li>
+                    <a href="/games/trex" class="block group">
+                        <div class="aspect-[14/13] mb-4 w-full rounded-2xl bg-gradient-to-br from-red-500 to-red-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                            <span class="text-white text-3xl md:text-2xl lg:text-2xl xl:text-3xl font-black tracking-wide text-center">T-REX<br>RUNNER</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">T-Rex Runner</h3>
+                        <p class="text-base/7 text-gray-300">Work in progress</p>
+                        <p class="text-sm/6 text-[#77C1D2] mt-2">🎮 Game</p>
+                    </a>
+                </li>
             </ul>
-
-            <!-- All Projects Section -->
-            <div class="mt-24">
-                <div class="mx-auto max-w-2xl lg:mx-0">
-                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl">All Projects</h2>
-                </div>
-
-                <!-- Games Section -->
-                <div class="mb-16 mt-10">
-                    <h3 class="text-2xl font-semibold text-white my-8 flex items-center">
-                        <span class="text-3xl mr-3">🎮</span>
-                        Games
-                    </h3>
-                    <ul role="list" class="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        <li>
-                            <a href="/games/blackjack" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-2xl font-black tracking-wide">BLACKJACK</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Blackjack</p>
-                                <p class="text-sm text-gray-400">Classic casino card game</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/games/horse-racing" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-blue-400 to-blue-900 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-xl font-black tracking-wide text-center">HORSE RACING</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Horse Racing</p>
-                                <p class="text-sm text-gray-400">Bet on virtual horse races</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/games/quiz" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-yellow-200 to-yellow-400 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-black text-2xl font-black tracking-wide">QUIZ</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Quiz</p>
-                                <p class="text-sm text-gray-400">Test your knowledge</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/games/war" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-red-500 to-red-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-2xl font-black tracking-wide">WAR</span>
-                                </div>
-                                <p class="text-base font-medium text-white">War</p>
-                                <p class="text-sm text-gray-400">Classic card battle game</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/games/wheel-of-fortune" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-lg font-black tracking-wide text-center">WHEEL OF FORTUNE</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Wheel of Fortune</p>
-                                <p class="text-sm text-gray-400">Guess the phrase</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/games/wordle" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-2xl font-black tracking-wide">WORDLE</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Wordle</p>
-                                <p class="text-sm text-gray-400">Guess the 5-letter word</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/games/snake" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-2xl font-black tracking-wide">SNAKE</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Snake</p>
-                                <p class="text-sm text-gray-400">Classic snake game</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Projects Section -->
-                <div>
-                    <h3 class="text-2xl font-semibold text-white mb-8 flex items-center">
-                        <span class="text-3xl mr-3">🛠️</span>
-                        Tools & Projects
-                    </h3>
-                    <ul role="list" class="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        <li>
-                            <a href="/projects/calculator" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-slate-400 to-slate-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-2xl font-black tracking-wide">CALC</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Calculator</p>
-                                <p class="text-sm text-gray-400">Modern calculator app</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/projects/expense-tracker" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-green-400 to-green-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-xl font-black tracking-wide text-center">EXPENSE TRACKER</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Expense Tracker</p>
-                                <p class="text-sm text-gray-400">Track income and expenses</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/projects/memory" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-purple-400 to-purple-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-2xl font-black tracking-wide">MEMORY</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Memory Game</p>
-                                <p class="text-sm text-gray-400">Brain training game</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/projects/pokemon-list" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-red-400 to-red-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-xl font-black tracking-wide">POKÉDEX</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Pokédex</p>
-                                <p class="text-sm text-gray-400">Interactive Pokémon database</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/projects/todo-list" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-blue-400 to-blue-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-2xl font-black tracking-wide">TODO</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Todo List</p>
-                                <p class="text-sm text-gray-400">Task management app</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/projects/weather" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-2xl font-black tracking-wide">WEATHER</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Weather Dashboard</p>
-                                <p class="text-sm text-gray-400">Real-time weather data</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 </x-layout>

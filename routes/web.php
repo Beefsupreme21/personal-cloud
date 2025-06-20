@@ -29,7 +29,7 @@ Route::prefix('directives')->group(function () {
 });
 
 Route::prefix('games')->group(function () {
-    Route::view('/', 'home');
+    Route::view('/', 'games.index');
     Route::view('/blackjack', 'games.blackjack');
     Route::view('/candyland', 'games.candyland');
     Route::view('/hangman', 'games.hangman');
@@ -44,7 +44,7 @@ Route::prefix('games')->group(function () {
 });
 
 Route::prefix('projects')->group(function () {
-    Route::view('/', 'home');
+    Route::view('/', 'projects.index');
     Route::view('/calculator', 'projects.calculator');
     Route::view('/dropdown', 'projects.dynamic-dropdown');
     Route::view('/expense-tracker', 'projects.expense-tracker');

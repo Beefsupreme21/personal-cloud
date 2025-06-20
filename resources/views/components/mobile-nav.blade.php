@@ -106,10 +106,22 @@
                 <span class="ml-2 uppercase">Components</span>
             </a> -->
 
+            @if (app()->environment('local'))
             <a href="/test" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center mt-8 px-6 py-1 font-bold rounded-md">
                 <x-svg.beaker class="w-8 h-8" />
                 <span class="ml-2 uppercase">Testing</span>
             </a>
+            @endif
+
+            <div class="mt-8 pt-4 border-t border-gray-700">
+                <a href="mailto:csanda@gmail.com" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-6 py-1 font-bold rounded-md">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                    </svg>
+                    <span class="ml-2 uppercase">Contact</span>
+                </a>
+            </div>
         </nav>
       </div>
     </div>
