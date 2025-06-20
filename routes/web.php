@@ -37,8 +37,10 @@ Route::prefix('games')->group(function () {
     Route::view('/pokemon-quiz', 'games.pokemon-quiz');
     Route::view('/quiz', 'games.quiz');
     Route::view('/snake', 'games.snake');
+    Route::view('/trex', 'games.trex');
     Route::view('/war', 'games.war');
     Route::view('/wheel-of-fortune', 'games.wheel-of-fortune');
+    Route::view('/wordle', 'games.wordle');
 });
 
 Route::prefix('projects')->group(function () {

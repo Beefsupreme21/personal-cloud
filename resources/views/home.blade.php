@@ -37,10 +37,50 @@
                 </div>
             </li>
 
+            <!-- Skills and Tools Section -->
+            <div class="mt-24">
+                <div class="mx-auto max-w-2xl lg:mx-0">
+                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl">Skills & Tools</h2>
+                </div>
+                <div class="flex gap-12 mt-10">
+                    <div class="text-center">
+                        <x-svg.laravel class="w-16 h-16 mx-auto mb-2" />
+                        <p class="text-[#77C1D2] font-medium">Laravel</p>
+                    </div>
+                    <div class="text-center">
+                        <x-svg.vue class="w-16 h-16 mx-auto mb-2" />
+                        <p class="text-[#77C1D2] font-medium">Vue.js</p>
+                    </div>
+                    <div class="text-center">
+                        <x-svg.alpine class="w-16 h-16 mx-auto mb-2" />
+                        <p class="text-[#77C1D2] font-medium">Alpine.js</p>
+                    </div>
+                    <div class="text-center">
+                        <x-svg.livewire class="w-16 h-16 mx-auto mb-2" />
+                        <p class="text-[#77C1D2] font-medium">Livewire</p>
+                    </div>
+                    <div class="text-center">
+                        <x-svg.css class="w-16 h-16 mx-auto mb-2" />
+                        <p class="text-[#77C1D2] font-medium">CSS</p>
+                    </div>
+                    <div class="text-center">
+                        <x-svg.tailwind class="w-16 h-16 mx-auto mb-2" />
+                        <p class="text-[#77C1D2] font-medium">Tailwind</p>
+                    </div>
+                    <div class="text-center">
+                        <x-svg.sql class="text-gray-200 w-16 h-16 mx-auto mb-2" />
+                        <p class="text-[#77C1D2] font-medium">SQL</p>
+                    </div>
+                    <div class="text-center">
+                        <x-svg.github class="w-16 text-gray-200 h-16 mx-auto mb-2" />
+                        <p class="text-[#77C1D2] font-medium">GitHub</p>
+                    </div>
+                </div>
+            </div>
+
             <!-- Featured Projects -->
-            <div class="mx-auto max-w-2xl lg:mx-0 mt-16">
+            <div class="mx-auto max-w-2xl lg:mx-0 mt-24">
                 <h2 class="text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl">Featured Projects</h2>
-                <p class="mt-6 text-lg/8 text-gray-300">My best work - fully modernized applications</p>
             </div>
 
             <ul role="list" class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4">
@@ -74,30 +114,17 @@
                         <p class="text-sm/6 text-[#77C1D2] mt-2">🛠️ Project</p>
                     </a>
                 </li>
-                <li>
-                    <button onclick="document.getElementById('more-projects').scrollIntoView({behavior: 'smooth'})" class="block group w-full text-left">
-                        <div class="aspect-[14/13] mb-4 w-full rounded-2xl bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-dashed border-gray-500 flex flex-col items-center justify-center group-hover:scale-105 transition-transform duration-300 group-hover:border-[#77C1D2]">
-                            <div class="text-4xl mb-2">➕</div>
-                            <span class="text-white text-xl font-bold tracking-wide">MORE</span>
-                            <span class="text-white text-xl font-bold tracking-wide">PROJECTS</span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">View All Projects</h3>
-                        <p class="text-base/7 text-gray-300">Explore more games, tools, and demos</p>
-                        <p class="text-sm/6 text-[#77C1D2] mt-2">👇 Scroll Down</p>
-                    </button>
-                </li>
             </ul>
 
-            <!-- More Projects Section -->
-            <div id="more-projects" class="mt-24">
-                <div class="mx-auto max-w-2xl lg:mx-0 mb-16">
+            <!-- All Projects Section -->
+            <div class="mt-24">
+                <div class="mx-auto max-w-2xl lg:mx-0">
                     <h2 class="text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl">All Projects</h2>
-                    <p class="mt-6 text-lg/8 text-gray-300">Games, tools, and demos organized by category</p>
                 </div>
 
                 <!-- Games Section -->
-                <div class="mb-16">
-                    <h3 class="text-2xl font-semibold text-white mb-8 flex items-center">
+                <div class="mb-16 mt-10">
+                    <h3 class="text-2xl font-semibold text-white my-8 flex items-center">
                         <span class="text-3xl mr-3">🎮</span>
                         Games
                     </h3>
@@ -109,15 +136,6 @@
                                 </div>
                                 <p class="text-base font-medium text-white">Blackjack</p>
                                 <p class="text-sm text-gray-400">Classic casino card game</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/games/hangman" class="block group">
-                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-orange-400 to-orange-700 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                                    <span class="text-white text-2xl font-black tracking-wide">HANGMAN</span>
-                                </div>
-                                <p class="text-base font-medium text-white">Hangman</p>
-                                <p class="text-sm text-gray-400">Guess the word game</p>
                             </a>
                         </li>
                         <li>
@@ -154,6 +172,24 @@
                                 </div>
                                 <p class="text-base font-medium text-white">Wheel of Fortune</p>
                                 <p class="text-sm text-gray-400">Guess the phrase</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/games/wordle" class="block group">
+                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+                                    <span class="text-white text-2xl font-black tracking-wide">WORDLE</span>
+                                </div>
+                                <p class="text-base font-medium text-white">Wordle</p>
+                                <p class="text-sm text-gray-400">Guess the 5-letter word</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/games/snake" class="block group">
+                                <div class="aspect-[14/13] mb-3 w-full rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+                                    <span class="text-white text-2xl font-black tracking-wide">SNAKE</span>
+                                </div>
+                                <p class="text-base font-medium text-white">Snake</p>
+                                <p class="text-sm text-gray-400">Classic snake game</p>
                             </a>
                         </li>
                     </ul>

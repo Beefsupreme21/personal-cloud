@@ -24,9 +24,6 @@
                     <!-- <a href="/games/candyland" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Candyland
                     </a> -->
-                    <a href="/games/hangman" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
-                        Hangman
-                    </a>
                     <a href="/games/horse-racing" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Horse Racing
                     </a>
@@ -42,11 +39,17 @@
                     <a href="/games/snake" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Snake
                     </a>
+                    <a href="/games/trex" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
+                        T-Rex Runner
+                    </a>
                     <a href="/games/war" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         War
                     </a>
                     <a href="/games/wheel-of-fortune" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
                         Wheel of Fortune
+                    </a>
+                    <a href="/games/wordle" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-6 py-1 rounded-md">
+                        Wordle
                     </a>
                 @endif
 
